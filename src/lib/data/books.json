@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "title": "The Shadow of the Wind",
+    "author": "Carlos Ruiz Zafón",
+    "description": "A young boy discovers a mysterious book that leads him into a labyrinth of intrigue and secrets in post-war Barcelona. A gripping tale of love, loss, and the power of literature.",
+    "category": "Story",
+    "available_quantity": 5,
+    "image_url": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "2",
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "description": "A handbook of agile software craftsmanship that teaches developers how to write code that is clean, maintainable, and efficient. A must-read for every programmer.",
+    "category": "Tech",
+    "available_quantity": 3,
+    "image_url": "https://images.unsplash.com/photo-1515879218367-8466d910auj7?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "3",
+    "title": "A Brief History of Time",
+    "author": "Stephen Hawking",
+    "description": "An exploration of the universe's most profound mysteries, from black holes to the Big Bang. Hawking makes complex physics accessible and fascinating for all readers.",
+    "category": "Science",
+    "available_quantity": 7,
+    "image_url": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "4",
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "description": "Set in the Jazz Age, this classic novel explores themes of wealth, idealism, and the American Dream through the eyes of the enigmatic Jay Gatsby.",
+    "category": "Story",
+    "available_quantity": 4,
+    "image_url": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "5",
+    "title": "The Pragmatic Programmer",
+    "author": "David Thomas & Andrew Hunt",
+    "description": "From journeyman to master — this book examines the core processes of software development and offers practical advice for becoming a better programmer.",
+    "category": "Tech",
+    "available_quantity": 6,
+    "image_url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "6",
+    "title": "Cosmos",
+    "author": "Carl Sagan",
+    "description": "A journey through space and time that explores the evolution of the universe, the origins of life, and humanity's place among the stars. Science writing at its finest.",
+    "category": "Science",
+    "available_quantity": 8,
+    "image_url": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "7",
+    "title": "1984",
+    "author": "George Orwell",
+    "description": "A dystopian masterpiece set in a totalitarian society where Big Brother watches everything. A chilling warning about the dangers of government overreach.",
+    "category": "Story",
+    "available_quantity": 2,
+    "image_url": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "8",
+    "title": "Design Patterns",
+    "author": "Gang of Four",
+    "description": "The definitive guide to reusable object-oriented software design patterns. Essential reading for software architects and senior developers.",
+    "category": "Tech",
+    "available_quantity": 4,
+    "image_url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "9",
+    "title": "The Gene: An Intimate History",
+    "author": "Siddhartha Mukherjee",
+    "description": "A sweeping exploration of the science of genetics, from Mendel's garden to CRISPR technology. A story of discovery, power, and the future of humanity.",
+    "category": "Science",
+    "available_quantity": 5,
+    "image_url": "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "10",
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "description": "A powerful story of racial injustice and moral growth in the American South, told through the innocent eyes of young Scout Finch.",
+    "category": "Story",
+    "available_quantity": 6,
+    "image_url": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "11",
+    "title": "You Don't Know JS",
+    "author": "Kyle Simpson",
+    "description": "A deep dive into the core mechanisms of JavaScript. This series challenges assumptions and helps developers truly understand the language they use daily.",
+    "category": "Tech",
+    "available_quantity": 9,
+    "image_url": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=600&fit=crop"
+  },
+  {
+    "id": "12",
+    "title": "Sapiens: A Brief History of Humankind",
+    "author": "Yuval Noah Harari",
+    "description": "A groundbreaking narrative of human history, from the emergence of Homo sapiens in Africa to the revolutions that shaped our modern world.",
+    "category": "Science",
+    "available_quantity": 3,
+    "image_url": "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=600&fit=crop"
+  }
+]
