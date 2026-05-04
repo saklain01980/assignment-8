@@ -18,6 +18,50 @@ interface Book {
   image_url: string;
 }
 
+// Fallback static data in case DB is unavailable
+const FALLBACK_BOOKS: Book[] = [
+  {
+    _id: "1",
+    bookId: "1",
+    title: "The Shadow of the Wind",
+    author: "Carlos Ruiz Zafón",
+    description: "A young boy discovers a mysterious book that leads him into a labyrinth of intrigue and secrets in post-war Barcelona.",
+    category: "Story",
+    available_quantity: 5,
+    image_url: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
+  },
+  {
+    _id: "2",
+    bookId: "2",
+    title: "Clean Code",
+    author: "Robert C. Martin",
+    description: "A handbook of agile software craftsmanship that teaches developers how to write clean, maintainable code.",
+    category: "Tech",
+    available_quantity: 3,
+    image_url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=600&fit=crop",
+  },
+  {
+    _id: "3",
+    bookId: "3",
+    title: "A Brief History of Time",
+    author: "Stephen Hawking",
+    description: "An exploration of the universe's most profound mysteries, from black holes to the Big Bang.",
+    category: "Science",
+    available_quantity: 7,
+    image_url: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400&h=600&fit=crop",
+  },
+  {
+    _id: "4",
+    bookId: "4",
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    description: "Set in the Jazz Age, this classic novel explores themes of wealth, idealism, and the American Dream.",
+    category: "Story",
+    available_quantity: 4,
+    image_url: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=600&fit=crop",
+  },
+];
+
 export default function HomePage() {
   const [featuredBooks, setFeaturedBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
@@ -30,9 +74,11 @@ export default function HomePage() {
         // Fetch top 4 books
         const res = await fetch("/api/books?limit=4");
         const data = await res.json();
-        setFeaturedBooks(Array.isArray(data) ? data : []);
+        const books = Array.isArray(data) ? data : [];
+        setFeaturedBooks(books.length > 0 ? books : FALLBACK_BOOKS);
       } catch (error) {
         console.error("Failed to fetch books:", error);
+        setFeaturedBooks(FALLBACK_BOOKS);
       } finally {
         setLoading(false);
       }
@@ -43,7 +89,7 @@ export default function HomePage() {
   return (
     <div>
       {/* ── Hero Banner ── */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden" id="hero-banner">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden" id="hero-banner">
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" />

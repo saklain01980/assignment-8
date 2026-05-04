@@ -17,6 +17,22 @@ interface Book {
 
 const categories = ["All", "Story", "Tech", "Science"];
 
+// Static fallback data
+const ALL_BOOKS: Book[] = [
+  { _id: "1", bookId: "1", title: "The Shadow of the Wind", author: "Carlos Ruiz Zafón", description: "A young boy discovers a mysterious book.", category: "Story", available_quantity: 5, image_url: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop" },
+  { _id: "2", bookId: "2", title: "Clean Code", author: "Robert C. Martin", description: "A handbook of agile software craftsmanship.", category: "Tech", available_quantity: 3, image_url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=600&fit=crop" },
+  { _id: "3", bookId: "3", title: "A Brief History of Time", author: "Stephen Hawking", description: "An exploration of the universe's most profound mysteries.", category: "Science", available_quantity: 7, image_url: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400&h=600&fit=crop" },
+  { _id: "4", bookId: "4", title: "The Great Gatsby", author: "F. Scott Fitzgerald", description: "A classic novel exploring the American Dream.", category: "Story", available_quantity: 4, image_url: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=600&fit=crop" },
+  { _id: "5", bookId: "5", title: "The Pragmatic Programmer", author: "David Thomas & Andrew Hunt", description: "From journeyman to master.", category: "Tech", available_quantity: 6, image_url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=600&fit=crop" },
+  { _id: "6", bookId: "6", title: "Cosmos", author: "Carl Sagan", description: "A journey through space and time.", category: "Science", available_quantity: 8, image_url: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&h=600&fit=crop" },
+  { _id: "7", bookId: "7", title: "1984", author: "George Orwell", description: "A dystopian masterpiece.", category: "Story", available_quantity: 2, image_url: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=600&fit=crop" },
+  { _id: "8", bookId: "8", title: "Design Patterns", author: "Gang of Four", description: "The definitive guide to reusable OO software design.", category: "Tech", available_quantity: 4, image_url: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&h=600&fit=crop" },
+  { _id: "9", bookId: "9", title: "The Gene: An Intimate History", author: "Siddhartha Mukherjee", description: "A sweeping exploration of the science of genetics.", category: "Science", available_quantity: 5, image_url: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?w=400&h=600&fit=crop" },
+  { _id: "10", bookId: "10", title: "To Kill a Mockingbird", author: "Harper Lee", description: "A story of racial injustice and moral growth.", category: "Story", available_quantity: 6, image_url: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop" },
+  { _id: "11", bookId: "11", title: "You Don't Know JS", author: "Kyle Simpson", description: "A deep dive into core JavaScript mechanisms.", category: "Tech", available_quantity: 9, image_url: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=600&fit=crop" },
+  { _id: "12", bookId: "12", title: "Sapiens: A Brief History of Humankind", author: "Yuval Noah Harari", description: "A groundbreaking narrative of human history.", category: "Science", available_quantity: 3, image_url: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=600&fit=crop" },
+];
+
 export default function AllBooksPage() {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,9 +48,35 @@ export default function AllBooksPage() {
 
       const res = await fetch(`/api/books?${params.toString()}`);
       const data = await res.json();
-      setBooks(Array.isArray(data) ? data : []);
-    } catch (error) {
-      console.error("Failed to fetch books:", error);
+      const fetchedBooks = Array.isArray(data) ? data : [];
+
+      if (fetchedBooks.length > 0) {
+        setBooks(fetchedBooks);
+      } else {
+        // Fall back to static data with client-side filtering
+        let filtered = ALL_BOOKS;
+        if (activeCategory !== "All") {
+          filtered = filtered.filter((b) => b.category === activeCategory);
+        }
+        if (search) {
+          filtered = filtered.filter((b) =>
+            b.title.toLowerCase().includes(search.toLowerCase())
+          );
+        }
+        setBooks(filtered);
+      }
+    } catch {
+      // Fallback to static data with client-side filtering
+      let filtered = ALL_BOOKS;
+      if (activeCategory !== "All") {
+        filtered = filtered.filter((b) => b.category === activeCategory);
+      }
+      if (search) {
+        filtered = filtered.filter((b) =>
+          b.title.toLowerCase().includes(search.toLowerCase())
+        );
+      }
+      setBooks(filtered);
     } finally {
       setLoading(false);
     }
